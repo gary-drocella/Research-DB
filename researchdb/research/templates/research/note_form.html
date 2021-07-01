@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <span>{{ form.note_txt.error }}</span>
+                <textarea cols="80" rows="12" name="txt" id="txt" class="form-control">{{ note.txt }}</textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit Note" class="form-control w-25" />
+            </div>
+        </form>
+    </div>
+{% endblock %}

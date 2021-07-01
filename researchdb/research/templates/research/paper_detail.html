@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h3>{{ paper.title}} Notes</h3>
+        <div class="col">
+            {% if paper.notes.all.count > 0 %}
+                {% for note in paper.notes.all %}
+                    <div class="row my-3 py-3">
+                        <div class="col">
+                            {{ note.txt }}
+                        </div>
+                    </div>
+                    <div class="row my-3 py-3 border-bottom">
+                        <div class="col">
+                            <a href="{% url 'research:delete-note' pk=note.id %}">Delete</a>
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'research:edit-note' pk=note.id %}">Edit</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>There are no notes for this paper.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container">
+        <h3>Add Note</h3>
+        <div>
+            <form action="{% url 'research:create-note' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <span>{{ form.note_txt.error }}</span>
+                    <textarea cols="80" rows="12" name="note_txt" id="note_txt" class="form-control">{{ form.txt.default }}</textarea>
+                </div>
+                <input type="hidden" name="paper_id" id="paper_id" value="{{ paper.id }}" class="form-control" />
+                <div class="form-group">
+                    <input type="submit" value="Create Note" class="form-control w-25" />
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

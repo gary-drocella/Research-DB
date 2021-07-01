@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Semesters</h3>
+
+    <div class="container">
+        {% for semester in semesters %}
+            <div class="row mt-3">
+                <a href="{% url 'research:detail-semester' semester.id %}">{{ semester.name }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

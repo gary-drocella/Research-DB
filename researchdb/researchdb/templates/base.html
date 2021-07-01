@@ -1,0 +1,42 @@
+{% load bootstrap4 %}
+{% load fontawesome_5 %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Research DB</title>
+    </head>
+    <body>
+        <div class="row d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-md-8">
+                <div class="container">
+                    <div class="bg-light">
+                        <h1><strong>R</strong>esearch <strong>D</strong>b</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <a href="{% url 'research:list-semesters' %}">Semesters</a>
+                        </div>
+                        <div class="col-sm">
+                            <a href="{% url 'research:list-courses' %}">Courses</a>
+                        </div>
+                        <div class="col-sm">
+                            <a href="{% url 'research:list-papers' %}">Papers</a>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                {% block content %} {% endblock %}
+            </div>
+            <!--Grid column-->
+          
+          </div>
+
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery=1 %}
+        {% block js %}{% endblock %}
+        {% fontawesome_5_static %} 
+
+    </body>
+</html>
