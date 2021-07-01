@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h3>Are you sure you want to delete the following note?</h3>
+        <p>
+            {{ txt }}
+        </p>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="submit" class="form-control w-25" value="Delete Note" />
+            </div>
+        </form>
+    </div>
+{% endblock %}
